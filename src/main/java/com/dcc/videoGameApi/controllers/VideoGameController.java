@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
+
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class VideoGameController {
@@ -22,5 +24,11 @@ public class VideoGameController {
     public long GetCount(){
         return service.GetCountOfGames();
     }
+
+    @GetMapping("/all")
+    public List<VideoGame> GetAll(){return service.GetAll();}
+
+    @GetMapping("/getById/{id}")
+    public VideoGame GetById(@PathVariable Integer id) {return service.GetById(id);};
 
 }
